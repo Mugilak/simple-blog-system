@@ -1,0 +1,51 @@
+<div *ngIf="showProgress">
+  <mat-progress-bar mode="indeterminate" color="basic"></mat-progress-bar>
+</div>
+<div>
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Blogs App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button aria-label="Example icon-button with create icon" *ngIf="!showCreate" class="create-blog-style" (click)="createBlog()">
+      <mat-icon><b>+</b></mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
+<div *ngIf="!showCreate" class="blogs-show" fxLayout="row" fxLayout.xs="column">
+  <div *ngFor="let data of blogsData">
+    <mat-card class="card" fxLayoutGap="10px" fxFlex="2 4 calc(15em + 40px)">
+      <h2 class="title-style" (click)="getBlog(data)">{{data.title}}</h2>
+      <p>{{data.description}}</p>
+      <div fxLayout="row">
+        <h5 class="author-style" (click)="getAuthorBlog(data.author);">@{{data.author}}</h5>
+        <h6>{{data.time}}</h6>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div *ngIf="showCreate">
+  <mat-card fxLayout="column" class="container">
+    <h2>Create New blog for {{currentUser}}</h2>
+    <form class="card" fxLayoutGap="10px" [formGroup]="blog" (ngSubmit)="submit()">
+      <div class="field-container">
+        <mat-form-field>
+          <mat-label>Enter Title</mat-label>
+          <input matInput formControlName="title" required>
+        </mat-form-field>
+      </div>
+      <div class="field-container">
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea matInput #desc formControlName="description" required></textarea>
+          <mat-hint align="end">{{desc.value.length}} / 256</mat-hint>
+        </mat-form-field>
+      </div>
+      <div style="align-items: center;">
+        <button mat-raised-button color="primary" style="color: black; border-color: green;" type="submit"
+          [disabled]="(blog.invalid)">Submit</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

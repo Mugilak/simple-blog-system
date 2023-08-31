@@ -1,0 +1,35 @@
+<div class="card" *ngIf="!show">
+    <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+</div>
+<div class="heading"><b>Bloggs App</b></div>
+<div>
+    <mat-card class="container">
+        <form [formGroup]="userData" (ngSubmit)="login()">
+            <div class="field-container">
+                <mat-form-field>
+                    <mat-label>Enter Username</mat-label>
+                    <input matInput formControlName="username" required>
+                </mat-form-field>
+            </div>
+            <div class="field-container">
+                <mat-form-field>
+                    <mat-label>Enter Password</mat-label>
+                    <input matInput formControlName="password" required>
+                </mat-form-field>
+            </div>
+            <div style="align-items: center;">
+                <button mat-raised-button color="primary" style="color: black; border-color: green;" type="submit"
+                    [disabled]="(userData.invalid)||(!show)">Login</button>
+            </div>
+        </form>
+        <div *ngIf="error" class="card">
+            <h4 style="color: rgb(245, 30, 30); font-size: medium;">{{errorData}}</h4>
+        </div>
+        <div class="register">
+            <h5 style="color: black; font-size: small;">Don't have an account?
+                <a href="http://localhost:4200/register">Click here</a>
+                To register
+            </h5>
+        </div>
+    </mat-card>
+</div>

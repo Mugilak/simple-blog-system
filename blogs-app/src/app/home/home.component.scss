@@ -1,0 +1,43 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.blogs-show{
+  margin: 30px;
+}
+
+.card {
+  margin: 20px;
+  padding: 17px;
+  background-color: rgb(236, 224, 247);
+}
+
+.create-blog-style{
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.container {
+  margin: 3%;
+  border-color:rgb(83, 1, 160);
+  padding: 10px;
+  width: 26%;
+  text-align: left;
+  background-color: rgb(236, 224, 247);
+}
+
+.field-container{
+  align-items: center;
+  padding: 10px;
+}
+
+.title-style{
+  cursor: pointer;
+  color: rgb(83, 1, 160);
+  text-decoration: underline;
+}
+
+.author-style{
+  cursor: pointer;
+  color: rgb(33, 173, 228);
+}
